@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dijital Dünyam</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main-container">
+        
+        <div id="arkaplan-renk"></div>
+
+        <svg id="yol-alani" viewBox="0 0 800 5000" preserveAspectRatio="xMidYMax slice">
+            <path id="bisiklet-yolu" d="M 400 0 C 400 500, 700 800, 700 1500 C 700 2200, 100 2500, 100 3200 C 100 3900, 600 4200, 400 5000" fill="none" stroke="#dcdde1" stroke-width="20" stroke-dasharray="30, 15"/>
+        </svg>
+
+        <div id="bisiklet">
+           <img src="images/bisikletli.svg" alt="Bisiklet" style="width: 250px; height: auto;">
+       </div>
+
+        <section class="bolum" id="bolum-1">
+            <div class="icerik">
+                <h1>Eğitim ve Temel Taşlar</h1>
+                <p>Yolculuk başlıyor...</p>
+                <button id="egitim-btn" class="detay-butonu">Akademik Kariyerim</button>
+            </div>
+        </section>
+
+        <section class="bolum" id="bolum-2">
+            <div class="icerik">
+                <h2>Dijital Atölyem</h2>
+                <p>Burada geliştirdiğim projeler yer alıyor.</p>
+            
+                <button id="atolye-btn" class="detay-butonu">Projelerimi İncele</button>
+            </div>
+        </section>
+
+        <section class="bolum" id="bolum-3">
+            <div class="icerik">
+                <h2>Oyun İstasyonum</h2>
+                <p>Biraz mola ve eğlence zamanı.</p>
+                <button id="oyun-btn" class="detay-butonu">Favori Oyunlarım</button>
+            </div>
+        </section>
+
+       <section class="bolum" id="bolum-4">
+            <div class="icerik">
+                <h2>Kişisel Dünyam</h2>
+                <p>Hobilerim ve ilgi alanlarım.</p>
+                <button id="hobi-btn" class="detay-butonu">Hobilerimi Gör</button>
+            </div>
+        </section>
+
+      <section class="bolum" id="bolum-5">
+            <div class="icerik">
+                <h2>Ufuk Çizgisi</h2>
+                <p>Gelecekteki hedeflerim...</p>
+                <button id="hedef-btn" class="detay-butonu">Hedeflerimi Gör</button>
+            </div>
+        </section>
+    </div>
+
+    <div id="akademi-modal" class="modal-arkaplan">
+        <div class="modal-icerik-kutusu" id="modal-kutu-akademi">
+            <button id="modal-kapat-akademi" class="kapat-butonu">← Ana Ekrana Dön</button>
+            
+            <div class="modal-govde">
+                <div class="profil-alani">
+                    <img src="beyza.jpeg" alt="Profil Fotoğrafı" class="profil-foto">
+                </div>
+                
+                <div class="akis-semasi">
+                    <h2 class="akis-baslik">Akademik Özgeçmiş</h2>
+                    
+                    <div class="akis-adimi">
+                        <div class="akis-noktasi"></div>
+                        <div class="akis-metni">
+                            <h3>Lise Mezuniyeti</h3>
+                            <p><strong>Turgutlu Anadolu Lisesi</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="akis-adimi">
+                        <div class="akis-noktasi"></div>
+                        <div class="akis-metni">
+                            <h3>Lisans Eğitimi</h3>
+                            <p><strong>Balıkesir Üniversitesi</strong></p>
+                            <p>Bilgisayar Mühendisliği Bölümü - 2. Sınıf Öğrencisi</p>
+                            <p class="gno">Genel Not Ortalaması: <strong>2.69</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="atolye-modal" class="modal-arkaplan">
+        <div class="modal-icerik-kutusu proje-kutusu" id="modal-kutu-atolye">
+            <button id="modal-kapat-atolye" class="kapat-butonu">← Ana Ekrana Dön</button>
+            
+            <h2 class="akis-baslik" style="margin-bottom: 20px;">Geliştirdiğim Projeler</h2>
+            
+            <div class="projeler-listesi">
+                
+                <div class="proje-kart">
+                    <img src="proje_1.jpeg" alt="Robot Kol" class="proje-gorsel">
+                    <div class="proje-detay">
+                        <h3>Robot Kol Projesi <span class="yil-etiket">2025</span></h3>
+                        <p>Arduino kullanarak geliştirdik. Motor kontrolü ve hassas hareket algoritmaları uyguladık.</p>
+                    </div>
+                </div>
+
+                <div class="proje-kart">
+                    <img src="proje_2.jpeg" alt="Akıllı Kütüphane Yönetim Sistemi" class="proje-gorsel">
+                    <div class="proje-detay">
+                        <h3>Akıllı Kütüphane Yönetim Sistemi <span class="yil-etiket">2025</span></h3>
+                        <p><strong>BAÜN TTO</strong> Kütüphanede Final dönemi çoğu öğrencinin yaşadığı mağduriyeti gidermek amaçlı bir proje geliştirdik.</p>
+                    </div>
+                </div>
+
+                <div class="proje-kart">
+                    <img src="proje_5.jpeg" alt="Akıllı Ters Şemsiye" class="proje-gorsel">
+                    <div class="proje-detay">
+                        <h3>Akıllı Ters Şemsiye <span class="yil-etiket">2025</span></h3>
+                        <p><strong>BAÜN TTO</strong> İnovatif fikirler yarışması katılım projemiz. Günlük yaşama pratik ve teknolojik bir dokunuş.</p>
+                    </div>
+                </div>
+
+                <div class="proje-kart">
+                    <img src="proje_3.jpeg" alt="Laboratuvar Sayacı" class="proje-gorsel">
+                    <div class="proje-detay">
+                        <h3>Dinamik Kapasite Kontrollü Laboratuvar Sayacı <span class="yil-etiket">2026</span></h3>
+                        <p>Laboratuvar doluluk oranını eşzamanlı olarak takip eden ve kapasite aşımını kontrol eden sistem tasarladık.</p>
+                    </div>
+                </div>
+
+                <div class="proje-kart">
+                    <img src="proje_4.jpeg" alt="Stok Takip Sistemi" class="proje-gorsel">
+                    <div class="proje-detay">
+                        <h3>Stok ve Satış Takip Sistemi <span class="yil-etiket">2026</span></h3>
+                        <p>Python programlama dili, SQLite veritabanı ve PyQt5 arayüz kütüphanesi kullanarak, ürünlerin stok takibini ve dinamik veri güncellemesini yapabilen masaüstü yazılımı geliştirdim.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="oyun-modal" class="modal-arkaplan">
+        <div class="modal-icerik-kutusu oyun-kutusu" id="modal-kutu-oyun">
+            <button id="modal-kapat-oyun" class="kapat-butonu">← Ana Ekrana Dön</button>
+            
+            <h2 class="akis-baslik" style="margin-bottom: 20px;">Oyun İstasyonum - Favorilerim</h2>
+            
+            <div class="oyunlar-grid">
+                
+                <div class="oyun-kart">
+                    <video class="oyun-video" poster="oyun1.jpg" controls preload="none">
+                        <source src="oyun1.mp4" type="video/mp4">
+                    </video>
+                    <div class="oyun-detay">
+                        <h3>1. Stardew Valley</h3>
+                    </div>
+                </div>
+
+                <div class="oyun-kart">
+                    <video class="oyun-video" poster="oyun2.jpg" controls preload="none">
+                        <source src="oyun2.mp4" type="video/mp4">
+                    </video>
+                    <div class="oyun-detay">
+                        <h3>2. PlateUp!</h3>
+                    </div>
+                </div>
+
+                <div class="oyun-kart">
+                    <video class="oyun-video" poster="oyun3.jpg" controls preload="none">
+                        <source src="oyun3.mp4" type="video/mp4">
+                    </video>
+                    <div class="oyun-detay">
+                        <h3>3. Repo</h3>
+                    </div>
+                </div>
+
+                <div class="oyun-kart">
+                    <video class="oyun-video" poster="oyun4.jpg" controls preload="none">
+                        <source src="oyun4.mp4" type="video/mp4">
+                    </video>
+                    <div class="oyun-detay">
+                        <h3>4. Crime Simulator</h3>
+                    </div>
+                </div>
+
+                <div class="oyun-kart">
+                    <video class="oyun-video" poster="oyun5.jpg" controls preload="none">
+                        <source src="oyun5.mp4" type="video/mp4">
+                    </video>
+                    <div class="oyun-detay">
+                        <h3>5. Super Bunny Man</h3>
+                    </div>
+                </div>
+
+                <div class="oyun-kart">
+                    <video class="oyun-video" poster="oyun6.jpg" controls preload="none">
+                        <source src="oyun6.mp4" type="video/mp4">
+                    </video>
+                    <div class="oyun-detay">
+                        <h3>6. It Takes Two</h3>
+                    </div>
+                </div>
+
+                <div class="oyun-kart">
+                    <video class="oyun-video" poster="oyun7.jpg" controls preload="none">
+                        <source src="oyun7.mp4" type="video/mp4">
+                    </video>
+                    <div class="oyun-detay">
+                        <h3>7. Biped</h3>
+                    </div>
+                </div>
+
+                <div class="oyun-kart">
+                    <video class="oyun-video" poster="oyun8.jpg" controls preload="none">
+                        <source src="oyun8.mp4" type="video/mp4">
+                    </video>
+                    <div class="oyun-detay">
+                        <h3>8. Carry The Glass</h3>
+                    </div>
+                </div>
+
+                <div class="oyun-kart">
+                    <video class="oyun-video" poster="oyun9.jpg" controls preload="none">
+                        <source src="oyun9.mp4" type="video/mp4">
+                    </video>
+                    <div class="oyun-detay">
+                        <h3>9. Pico Park</h3>
+                    </div>
+                </div>
+
+                <div class="oyun-kart">
+                    <video class="oyun-video" poster="oyun10.jpg" controls preload="none">
+                        <source src="oyun10.mp4" type="video/mp4">
+                    </video>
+                    <div class="oyun-detay">
+                        <h3>10. Peak</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="hobi-modal" class="modal-arkaplan">
+        <div class="modal-icerik-kutusu hobi-kutusu" id="modal-kutu-hobi">
+            <button id="modal-kapat-hobi" class="kapat-butonu">← Ana Ekrana Dön</button>
+            
+            <h2 class="akis-baslik" style="margin-bottom: 20px;">Kişisel Dünyam - Hobilerim</h2>
+            
+            <div class="hobiler-grid">
+                
+                <div class="hobi-kart">
+                    <img src="hobi1.jpeg" alt="Satranç" class="hobi-gorsel">
+                    <div class="hobi-detay">
+                        <h3>1. Satranç Oynamak</h3>
+                    </div>
+                </div>
+
+                <div class="hobi-kart">
+                    <img src="hobi2.jpeg" alt="Voleybol" class="hobi-gorsel">
+                    <div class="hobi-detay">
+                        <h3>2. Voleybol</h3>
+                    </div>
+                </div>
+
+                <div class="hobi-kart">
+                    <img src="hobi3.jpeg" alt="Bilgisayar Oyunları" class="hobi-gorsel">
+                    <div class="hobi-detay">
+                        <h3>3. Bilgisayar Oyunları</h3>
+                    </div>
+                </div>
+
+                <div class="hobi-kart">
+                    <img src="hobi4.jpeg" alt="Doğa Yürüyüşleri" class="hobi-gorsel">
+                    <div class="hobi-detay">
+                        <h3>4. Doğa Yürüyüşleri</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="hedef-modal" class="modal-arkaplan">
+        <div class="modal-icerik-kutusu hedef-kutusu" id="modal-kutu-hedef">
+            <button id="modal-kapat-hedef" class="kapat-butonu">← Ana Ekrana Dön</button>
+            
+            <h2 class="akis-baslik" style="margin-bottom: 10px; text-align: center;">Gelecek Hedeflerim</h2>
+            <p style="text-align: center; font-size: 14px; opacity: 0.7; margin-bottom: 30px;">
+                <br>"Hayatta en hakiki mürşit ilimdir, fendir."</br>
+            </p>
+            
+            <div class="hedefler-kapsayici">
+                <div class="hedefler-kapsayici">
+                <div class="hedef-madde hedef-uzak-2">5. Uzman Bir Bilgisayar Mühendisi Olmak</div>
+                
+                <div class="hedef-madde hedef-uzak-1">4. Popüler Bir Oyun Geliştirebilmek</div>
+                
+                <div class="hedef-madde hedef-orta-2">3. Analitik Düşünebilen Bir Mühendis Olmak</div>
+                
+                <div class="hedef-madde hedef-orta-1">2. Dokuz Eylül Üniversitesinde Yüksek Lisans Yapmak</div>
+                
+                <div class="hedef-madde hedef-yakin">1. Üniversiteden 3 ve Üzeri Bir Ortalamayla Mezun Olabilmek</div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,504 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+
+#arkaplan-renk {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f5f6fa; /* Başlangıç rengi: Kırık beyaz */
+    z-index: -1; /* En arkada duracak */
+}
+
+.main-container {
+    position: relative;
+    width: 100%;
+}
+
+#yol-alani {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 800px;
+    height: 5000px; /* Bölümlerin toplam uzunluğuna uyumlu */
+    z-index: 1;
+}
+
+#bisiklet {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    /* Bisiklet görselini tam ortalamak için */
+    transform: translate(-50%, -50%); 
+}
+
+.bolum {
+    height: 1000px; /* Her bölümün kaydırma uzunluğu */
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+}
+
+/* İçerik kutularının yerleşimleri (Yolun sağına veya soluna) */
+.icerik {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 300px;
+}
+
+#bolum-1 .icerik { margin-left: 10%; }
+#bolum-2 .icerik { margin-left: 10%; }
+#bolum-3 .icerik { margin-left: 70%; }
+#bolum-4 .icerik { margin-left: 50%; }
+#bolum-5 .icerik { margin-left: 30%; text-align: center; }
+
+/* --- AKADEMİK KARİYER BUTON VE MODAL TASARIMLARI --- */
+
+.detay-butonu {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #2f3640;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    font-family: inherit;
+}
+
+.detay-butonu:hover {
+    background-color: #192a56;
+}
+
+/* Modal Arka Planı */
+.modal-arkaplan {
+    display: none; /* JS ile açılacak */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9999; /* Bisikletin ve yolun üstünde olması için kritik */
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+/* Modal Kutusu */
+.modal-icerik-kutusu {
+    width: 90%;
+    max-width: 700px;
+    padding: 40px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.kapat-butonu {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: inherit;
+}
+
+.kapat-butonu:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* İçerik Düzeni */
+.modal-govde {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    align-items: flex-start;
+}
+
+.profil-alani {
+    flex-shrink: 0;
+    width: 150px;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 4px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.profil-foto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Akış Şeması */
+.akis-semasi {
+    flex-grow: 1;
+    border-left: 2px solid rgba(0,0,0,0.2);
+    padding-left: 25px;
+}
+
+.akis-baslik {
+    margin-top: 0;
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+.akis-adimi {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.akis-noktasi {
+    position: absolute;
+    left: -32px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background-color: currentColor;
+    border-radius: 50%;
+}
+
+.akis-metni h3 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+}
+
+.akis-metni p {
+    margin: 2px 0;
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+.gno {
+    display: inline-block;
+    margin-top: 8px !important;
+    padding: 5px 10px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+    .modal-govde {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .akis-semasi {
+        border-left: none;
+        padding-left: 0;
+    }
+    .akis-noktasi {
+        display: none;
+    }
+}
+/* --- PROJELER LİSTESİ VE KART TASARIMLARI --- */
+
+.proje-kutusu {
+    max-width: 800px;
+}
+
+.projeler-listesi {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 60vh; /* Ekranın %60'ı kadar uzunlukta olsun */
+    overflow-y: auto; /* Taşan kısmı kaydırılabilir yap */
+    padding-right: 15px; /* Scroll bar (kaydırma çubuğu) için boşluk */
+}
+
+/* Scroll (Kaydırma Çubuğu) Tasarımı */
+.projeler-listesi::-webkit-scrollbar {
+    width: 8px;
+}
+.projeler-listesi::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+.projeler-listesi::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+.projeler-listesi::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.proje-kart {
+    display: flex;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 15px;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.proje-kart:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.proje-gorsel {
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+    background-color: rgba(0, 0, 0, 0.1); /* Resim yüklenmezse görünen renk */
+}
+
+.proje-detay h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.proje-detay p {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+.yil-etiket {
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 4px 8px;
+    border-radius: 15px;
+}
+
+@media (max-width: 600px) {
+    .proje-kart {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .proje-gorsel {
+        width: 100%;
+        height: 150px;
+    }
+}
+/* --- OYUN İSTASYONU KART VE VİDEO TASARIMLARI --- */
+
+.oyun-kutusu {
+    max-width: 900px;
+}
+
+.oyunlar-grid {
+    display: grid;
+    /* Ekran genişliğine göre yan yana kaç tane sığarsa otomatik dizer */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: 20px;
+    max-height: 65vh;
+    overflow-y: auto;
+    padding-right: 15px;
+    padding-bottom: 20px;
+}
+
+.oyunlar-grid::-webkit-scrollbar {
+    width: 8px;
+}
+.oyunlar-grid::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+.oyunlar-grid::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.oyun-kart {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.oyun-kart:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.oyun-video {
+    width: 100%;
+    height: 140px;
+    object-fit: cover; /* Videoyu veya resmi kutuya sığdırır */
+    background-color: #000;
+    cursor: pointer;
+}
+
+.oyun-detay {
+    padding: 12px;
+    text-align: center;
+}
+
+.oyun-detay h3 {
+    margin: 0;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* --- HOBİLER LİSTESİ VE KART TASARIMLARI --- */
+
+.hobi-kutusu {
+    max-width: 800px;
+}
+
+.hobiler-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 15px;
+    padding-bottom: 20px;
+}
+
+.hobiler-grid::-webkit-scrollbar {
+    width: 8px;
+}
+.hobiler-grid::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+.hobiler-grid::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.hobi-kart {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hobi-kart:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.hobi-gorsel {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    background-color: rgba(0, 0, 0, 0.1); /* Resim yüklenmezse görünen renk */
+}
+
+.hobi-detay {
+    padding: 15px;
+    text-align: center;
+}
+
+.hobi-detay h3 {
+    margin: 0;
+    font-size: 16px;
+    color: inherit;
+}
+/* --- HEDEFLER TASARIMI (YAKINDAN UZAĞA DERİNLİK EFEKTİ) --- */
+/* --- UFUK ÇİZGİSİ PERSPEKTİF TASARIMI --- */
+.hedef-kutusu {
+    max-width: 700px;
+    /* Lacivert zorunlu arka plan kaldırıldı, sitenin dinamik rengi geri geldi! */
+}
+
+.hedefler-kapsayici {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px; 
+    padding: 40px 0;
+    perspective: 1000px; 
+}
+
+.hedef-madde {
+    color: white; /* Sarı yazı iptal, hepsi temiz beyaz oldu */
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Üzerine gelince öne çıkma efekti aynen kalıyor */
+.hedef-madde:hover {
+    transform: scale(1.05) translateY(-5px) !important;
+    opacity: 1 !important;
+    filter: blur(0px) !important;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    z-index: 99 !important;
+}
+
+/* 1. En Yakın (En altta, en geniş, ilk renkli tasarım) */
+.hedef-yakin {
+    width: 90%;
+    background-color: #27ae60; /* Yeşil */
+    font-size: 20px;
+    opacity: 1;
+    z-index: 5;
+}
+
+/* 2. Hedef */
+.hedef-orta-1 {
+    width: 80%;
+    background-color: #2980b9; /* Mavi */
+    opacity: 0.9;
+    z-index: 4;
+}
+
+/* 3. Hedef */
+.hedef-orta-2 {
+    width: 70%;
+    background-color: #8e44ad; /* Mor */
+    opacity: 0.8;
+    z-index: 3;
+}
+
+/* 4. Hedef */
+.hedef-uzak-1 {
+    width: 60%;
+    background-color: #f39c12; /* Turuncu */
+    opacity: 0.7;
+    font-size: 14px;
+    z-index: 2;
+}
+
+/* 5. En Uzak (En üstte, ufukta olan) */
+.hedef-uzak-2 {
+    width: 50%;
+    background-color: #c0392b; /* Kırmızı */
+    opacity: 0.55; /* Çok silik değil, okunabilir seviyede */
+    font-size: 13px;
+    z-index: 1;
+}
